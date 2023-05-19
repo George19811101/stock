@@ -1,0 +1,59 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+
+mybatis:
+  mapper-locations: classpath:com/example/user/mapper/*.xml
+  type-aliases-package: com.example.user.mapper
+
+
+mybatis-plus:
+  configuration:
+    # 打印sql语句到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+sa-token:
+  token-name: token
+  timeout: 86400
+  activity-timeout: -1
+  is-concurrent: false
+  is-share: false
+  token-style: simple-uuid
+  is-log: false
+  auto-renew: true
+  is-print: false
+  pattern: /**
+  exclude-url: /user/login,/userVirtualWallet/in,/user/logout,/bulletinController/list,/bulletinController/bulletin,/bannerController/list,/user/register,/user/sendCaptcha,/user/forgetPassword,/user/listArea,/virtualCoin/list,/storage/**,/swagger-resources,/v2/api-docs,/doc.*/**,/smsTemp/**,/captcha/**,/mailTemp/**,/webjars/**
+
+
+thredpool:
+  cache-core-pool-size: 10
+  cache-maximum-pool-size: 60
+  cache-keep-alive-time: 6000
+  fixed-pool-size: 20
+  fixed-keep-alive-time: 3000
+  fixed-queue-size: 200
+  free-core-tread-pool-size: 10
+  free-maximum-pool-size: 60
+  free-keep-alive-time: 6000
+# 发送短信时需要的配置，短信宝的应用
+sms:
+  template: "?u=%s&p=%s&m=%s&c=%s"
+  user-name: "whyy"
+  password: "aa123456aa"
+  url: "http://api.smsbao.com/sms"
+# Pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: countSql
