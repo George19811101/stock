@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.user.mapper.UserMapper">
+
+    <!--userVo-->
+    <sql id="userVo">
+        id,
+        user_name,
+        area_code,
+        phone_no,
+            head_img_url,
+        login_password,
+        trade_password,
+
+        invitation_code,
+        complete_level,
+        create_time,
+        `status`,
+        parent_id
+
+    </sql>
+
+    <select id="getUserByInvitationCode" resultType="com.example.user.model.po.User">
+        SELECT
+        <include refid="userVo"/>
+        FROM
+        `user`
+        WHERE
+        id = #{invitationCode}
+    </select>
+
+    <select id="loginByPhoneNo" resultType="com.example.user.model.vo.UserVo">
+        SELECT
+        <include refid="userVo"/>
+        FROM
+        `user`
+        WHERE area_code = #{areaCode} AND   phone_no = #{phoneNo}
+    </select>
+
+    <insert id="saveUserByEntity" parameterType="com.example.user.model.po.User" keyProperty="id" useGeneratedKeys="true">
+        insert into `user` ( user_name,area_code,phone_no,head_img_url,login_password,trade_password,
+                               invitation_code, complete_level,create_time,`status`,parent_id)
+        values ( #{userName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR},#{headImgUrl,jdbcType=VARCHAR},#{loginPassword,jdbcType=VARCHAR},
+                #{tradePassword,jdbcType=VARCHAR},#{invitationCode,jdbcType=BIGINT},#{completeLevel,jdbcType=INTEGER} , now(),1,  #{parentId,jdbcType=BIGINT} )
+
+    </insert>
+
+    <update id="updateByUserId" parameterType="com.example.user.model.po.User"  >
+        update `user`
+        set   user_name = #{userName}, area_code=#{areaCode}, phone_no =#{phoneNo},
+              head_img_url=#{headImgUrl}, login_password =#{loginPassword},trade_password=#{tradePassword},
+              invitation_code=#{invitationCode},complete_level=#{completeLevel},`status`=#{status},parent_id=#{parentId}
+        where id = #{id}
+    </update>
+
+</mapper>
