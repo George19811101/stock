@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.user.mapper.BanksMapper">
+
+    <!--userVo-->
+    <sql id="bank">
+         id, bank,bank_code,b2c;
+    </sql>
+
+    <select id="getAllBanks" resultType="com.example.user.model.Banks">
+        SELECT
+        <include refid="bank"/>
+        FROM
+        banks
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertBanks" parameterType="com.example.user.model.Banks" keyProperty="id" useGeneratedKeys="true">
+        insert into banks (    bank,bank_code,b2c)
+        values (  #{bank,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR},#{b2c,jdbcType=INTEGER}  )
+
+    </insert>
+    <update id="updateBankById" parameterType="com.example.user.model.bo.Wallet"  >
+        update banks
+        set   bank = #{bank}, bank_code=#{bankCode}, b2c =#{b2c}
+        where id = #{id}
+    </update>
+
+
+</mapper>
