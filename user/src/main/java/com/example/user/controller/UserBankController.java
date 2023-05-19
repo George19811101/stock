@@ -22,16 +22,11 @@ import java.util.List;
 
 @Api(tags = "用户中心")
 @RestController
-@RequestMapping("user")
+@RequestMapping("userBank")
 public class UserBankController {
 
     @Autowired
     private UserBankService userBankService;
-
-
-
-
-
     @ApiOperation("添加银行信息")
     @PostMapping("/add")
     public Result<String> add(@RequestBody UserBank userBank) {

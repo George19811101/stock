@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.user.mapper.OrderMapper">
+
+    <!--userVo-->
+    <sql id="userBank">
+        id,user_id,amount,`type`,create_time,`result`,channel,stock_name,bank_id
+    </sql>
+
+    <select id="getAllOrders" resultType="com.example.user.model.Order">
+        SELECT
+        <include refid="userBank"/>
+        FROM
+        t_order where 1=1
+        <if test=" userId !=null and userId.length > 0">
+           and userId=#{UserId}
+        </if>
+        <if test=" type !=null and type.length > 0">
+           and `type`=#{type}
+        </if>
+        <if test=" result !=null and result.length > 0">
+            and `result`=#{result}
+        </if>
+        <if test=" channel !=null and channel.length > 0">
+           and channel=#{channel}
+        </if>
+        <if test=" stockName !=null and stockName.length > 0">
+            and stock_name=#{stockName}
+        </if>
+        <if test=" bankId !=null and bankId.length > 0">
+            and bank_id=#{bankId}
+        </if>
+
+    </select>
+
+    <insert id="insertOrder" parameterType="com.example.user.model.Order" keyProperty="id" useGeneratedKeys="true">
+        insert into t_order (   user_id,amount,`type`,create_time,`result`,channel,stock_name,bank_id)
+        values (  #{UserId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL},#{type,jdbcType=VARCHAR} ,now(),
+                #{result,jdbcType=VARCHAR},#{channel,jdbcType=VARCHAR} ,#{stockName,jdbcType=VARCHAR} ,#{bankId,jdbcType=BIGINT})
+
+    </insert>
+    <update id="updateOrderById" parameterType="com.example.user.model.Order"  >
+        update t_order
+        set   user_id= #{userId},amount=#{amount},`type`=#{type}, `result`=#{result},channel=#{channel},stock_name=#{stockName},bank_id=#{bankId}
+        where id = #{id}
+    </update>
+
+
+</mapper>

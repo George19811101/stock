@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.user.mapper.MonthSettingMapper">
+
+    <!--userVo-->
+    <sql id="monthSettingSql">
+        id,
+        user_id,
+        invest_amount,
+        levels,
+             fund_cycle,
+            cost,
+        isread,
+            start_time,
+            end_time,
+            is_settled,
+            total_allocation_fund,
+            loss_close_line,
+            loss_warn_line
+    </sql>
+
+    <insert id="insertMonthSetting" parameterType="com.example.user.model.bo.MonthSetting" keyProperty="id" useGeneratedKeys="true">
+        insert into month_setting ( user_id, invest_amount, levels,fund_cycle, cost,isread,start_time,end_time,is_settled,total_allocation_fund,loss_close_line,loss_warn_line)
+        values ( #{userId,jdbcType=BIGINT}, #{investAmount,jdbcType=DECIMAL}, #{levels,jdbcType=INTEGER},#{fundCycle,jdbcType=DECIMAL},#{cost,jdbcType=DECIMAL},
+                 1 ,#{startTime,jdbcType=VARCHAR},#{endTime,jdbcType=VARCHAR} ,0,#{totalAllocationFund,jdbcType=DECIMAL},#{lossCloseLine,jdbcType=DECIMAL},#{lossWarnLine,jdbcType=DECIMAL})
+
+    </insert>
+
+    <select id="selectByUnSettled"   resultType="com.example.user.model.bo.MonthSetting" >
+
+        SELECT
+        <include refid="monthSettingSql"/>
+        FROM
+        month_setting
+        WHERE is_settled = 0
+    </select>
+
+    <update id="updateMonthSetting" parameterType="com.example.user.model.bo.MonthSetting"  >
+        update month_setting
+        set   user_id = #{userId}, invest_amount=#{investAmount}, levels =#{levels},return_money=#{returnMoney},
+              fund_cycle=#{fundCycle}, cost =#{cost},isread=#{isread},start_time=#{startTime},end_time=#{endTime},is_settled=#{isSettled},
+              total_allocation_fund=#{totalAllocationFund},   loss_close_line=#{lossCloseLine}, loss_warn_line=#{lossWarnLine}
+        where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.user.mapper.WalletMapper">
+
+    <!--userVo-->
+    <sql id="wallet">
+        id,
+        user_id,
+        after_balance,
+        before_balance,
+        after_freeze,
+        before_freeze,
+        create_time,
+        update_time,
+        wallet_log_id
+    </sql>
+
+    <select id="getWalletByUserId" resultType="com.example.user.model.bo.Wallet">
+        SELECT
+        <include refid="wallet"/>
+        FROM
+        wallet
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="saveWalletByEntity" parameterType="com.example.user.model.bo.Wallet" keyProperty="id" useGeneratedKeys="true">
+        insert into wallet ( user_id, after_balance,before_balance,after_freeze,before_freeze,create_time,update_time,wallet_log_id)
+        values ( #{userId,jdbcType=BIGINT}, #{afterBalance,jdbcType=DECIMAL}, #{beforeBalance,jdbcType=DECIMAL},#{afterFreeze,jdbcType=DECIMAL}, #{beforeFreeze,jdbcType=DECIMAL},
+               now(),now(), #{walletLogId,jdbcType=BIGINT} )
+
+    </insert>
+    <update id="updateWalletById" parameterType="com.example.user.model.bo.Wallet"  >
+        update wallet
+        set   user_id = #{userId}, after_balance=#{afterBalance}, before_balance =#{beforeBalance},
+              after_freeze=#{afterFreeze}, before_freeze =#{beforeFreeze},update_time=now(),wallet_log_id=#{walletLogId}
+        where id = #{id}
+    </update>
+
+
+</mapper>
