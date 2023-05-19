@@ -4,7 +4,7 @@
 
     <!--userVo-->
     <sql id="userBank">
-        id, user_id,bank_id,code,`name`,address
+        id, user_id,bank_id,card,`name`,address
 
     </sql>
 
@@ -16,13 +16,13 @@
     </select>
 
     <insert id="insertUserBanks" parameterType="com.example.user.model.UserBank" keyProperty="id" useGeneratedKeys="true">
-        insert into user_bank (  user_id,bank_id,code,`name`,address)
-        values (  #{UserId,jdbcType=BIGINT}, #{bankId,jdbcType=BIGINT},#{code,jdbcType=VARCHAR} ,#{name,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR} )
+        insert into user_bank (  user_id,bank_id,card,`name`,address)
+        values (  #{UserId,jdbcType=BIGINT}, #{bankId,jdbcType=BIGINT},#{card,jdbcType=VARCHAR} ,#{name,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR} )
 
     </insert>
     <update id="updateBankById" parameterType="com.example.user.model.bo.Wallet"  >
         update user_bank
-        set   user_id = #{userId}, bank_id=#{bankId}, code =#{code},`name`=#{name},address=#{address}
+        set   user_id = #{userId}, bank_id=#{bankId}, card =#{card},`name`=#{name},address=#{address}
         where id = #{id}
     </update>
 

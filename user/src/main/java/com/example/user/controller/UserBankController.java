@@ -29,8 +29,6 @@ public class UserBankController {
     private UserBankService userBankService;
 
 
-    @Autowired
-    private BanksService banksService;
 
 
 

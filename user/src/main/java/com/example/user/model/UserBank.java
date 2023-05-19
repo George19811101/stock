@@ -9,7 +9,7 @@ public class UserBank {
     private long  id;
     private long userId;
     private long bankId;
-    private String code;
+    private String card;
     private String name;
     private String address;
 
