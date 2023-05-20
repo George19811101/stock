@@ -15,23 +15,29 @@
  */
 package com.pay.modules.unionpay.util;
 
-import org.apache.commons.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.MessageDigest;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.Signature;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.RSAPublicKeySpec;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 import javax.crypto.Cipher;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.*;
-import java.security.interfaces.RSAPublicKey;
-import java.security.spec.RSAPublicKeySpec;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
+
+import org.apache.commons.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class SecureUtil {
@@ -483,7 +489,7 @@ public class SecureUtil {
 		String hs = "";
 		String stmp = "";
 		for (int n = 0; n < b.length; n++) {
-			stmp = (Integer.toHexString(b[n] & 0XFF));
+			stmp = (java.lang.Integer.toHexString(b[n] & 0XFF));
 			if (stmp.length() == 1) {
 				hs = hs + "0" + stmp;
 			} else {

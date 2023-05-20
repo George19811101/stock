@@ -6,8 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * 企业微信
  */
-@Data
+
 @ConfigurationProperties(prefix = "cp.wx.pay")
+@Data
 public class CpWxPayProperties {
 
     private String appId;

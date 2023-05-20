@@ -15,15 +15,27 @@
  */
 package com.pay.modules.unionpay.util;
 
-import com.pay.modules.unionpay.util.BaseHttpSSLSocketFactory.TrustAnyHostnameVerifier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.net.ssl.HttpsURLConnection;
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.pay.modules.unionpay.util.BaseHttpSSLSocketFactory.TrustAnyHostnameVerifier;
 public class HttpClient {
 	private static final Logger logger = LoggerFactory.getLogger(HttpClient.class);
 	/**

@@ -2,8 +2,9 @@ package com.pay.modules.alipay.util;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@Data
+
 @ConfigurationProperties(prefix = "cp.ali.pay")
+@Data
 public class CpAliPayProperties {
 
     private String protocol;

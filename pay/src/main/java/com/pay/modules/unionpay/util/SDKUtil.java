@@ -15,13 +15,17 @@
  */
 package com.pay.modules.unionpay.util;
 
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.UnsupportedEncodingException;
-import java.util.*;
-import java.util.Map.Entry;
 
 public class SDKUtil {
 	private static final Logger logger = LoggerFactory.getLogger(SDKUtil.class);
