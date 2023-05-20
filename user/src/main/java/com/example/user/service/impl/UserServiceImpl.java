@@ -187,18 +187,10 @@ public class UserServiceImpl implements UserService {
         if(!userVo.getLoginPassword().equals(MD5Util.string2MD5(userBo.getLoginPassword()))){
             return Result.exception(ExceptionEnum.PASSWORD_ERROR);
         }
-        userVo.setToken( RandomStringUtils.randomAlphanumeric(24));
-        redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
-//        String token = RandomStringUtils.randomAlphanumeric(24);
-//        userVo.setToken(token);
-//        try {
-//        StpUtil.login(userVo.getId());
-//
-//        userVo.setToken(StpUtil.getTokenValue());
-//            redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
-//        }catch(Exception e){
-//            log.error(e.getMessage());
-//        }
+//        userVo.setToken( RandomStringUtils.randomAlphanumeric(24));
+//        redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
+        StpUtil.login(userVo.getId());
+        userVo.setToken(StpUtil.getTokenValue());
 
         return Result.ok(userVo);
 

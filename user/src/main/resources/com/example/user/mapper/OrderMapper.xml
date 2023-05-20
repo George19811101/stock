@@ -12,8 +12,8 @@
         <include refid="userBank"/>
         FROM
         t_order where 1=1
-        <if test=" userId !=null and userId.length > 0">
-           and userId=#{UserId}
+        <if test=" userId !=null  ">
+           and user_id=#{userId}
         </if>
         <if test=" type !=null and type.length > 0">
            and `type`=#{type}
@@ -24,10 +24,10 @@
         <if test=" channel !=null and channel.length > 0">
            and channel=#{channel}
         </if>
-        <if test=" stockId !=null and stockId.length > 0">
+        <if test=" stockId !=null  ">
             and stock_id=#{stockId}
         </if>
-        <if test=" bankId !=null and bankId.length > 0">
+        <if test=" bankId !=null  ">
             and bank_id=#{bankId}
         </if>
 
@@ -35,7 +35,7 @@
 
     <insert id="insertOrder" parameterType="com.example.user.model.Order" keyProperty="id" useGeneratedKeys="true">
         insert into t_order (   user_id,amount,`type`,create_time,`result`,channel,stock_id,bank_id)
-        values (  #{UserId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL},#{type,jdbcType=VARCHAR} ,now(),
+        values (  #{userId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL},#{type,jdbcType=VARCHAR} ,now(),
                 #{result,jdbcType=VARCHAR},#{channel,jdbcType=VARCHAR} , #{stockId,jdbcType=BIGINT} ,#{bankId,jdbcType=BIGINT})
 
     </insert>

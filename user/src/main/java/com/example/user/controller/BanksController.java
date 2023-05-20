@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "用户中心")
+@Api(tags = "银行信息")
 @RestController
 @RequestMapping("/banks")
 public class BanksController {
@@ -39,7 +39,7 @@ public class BanksController {
     }
 
     @ApiOperation("所有的银行信息")
-    @PostMapping("/getAllBanks")
+    @GetMapping("/getAllBanks")
     public Result<List<Banks>> getAllBanks( ) {
         List bankList=banksService.getAllBanks();
         return Result.ok(bankList);

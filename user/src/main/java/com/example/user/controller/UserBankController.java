@@ -13,14 +13,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "用户中心")
+@Api(tags = "用户银行信息")
 @RestController
 @RequestMapping("userBank")
 public class UserBankController {
@@ -40,7 +37,7 @@ public class UserBankController {
     }
 
     @ApiOperation("所有的银行信息")
-    @PostMapping("/getAllBanks")
+    @GetMapping("/getAllBanks")
     public Result<List<Banks>> getAllBanks( ) {
         List bankList=userBankService.getAllBanks();
         return Result.ok(bankList);
