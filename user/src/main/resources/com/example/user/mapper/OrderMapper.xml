@@ -4,7 +4,7 @@
 
     <!--userVo-->
     <sql id="userBank">
-        id,user_id,amount,`type`,create_time,`result`,channel,stock_name,bank_id
+        id,user_id,amount,`type`,create_time,`result`,channel,stock_id,bank_id
     </sql>
 
     <select id="getAllOrders" resultType="com.example.user.model.Order">
@@ -24,8 +24,8 @@
         <if test=" channel !=null and channel.length > 0">
            and channel=#{channel}
         </if>
-        <if test=" stockName !=null and stockName.length > 0">
-            and stock_name=#{stockName}
+        <if test=" stockId !=null and stockId.length > 0">
+            and stock_id=#{stockId}
         </if>
         <if test=" bankId !=null and bankId.length > 0">
             and bank_id=#{bankId}
@@ -34,14 +34,14 @@
     </select>
 
     <insert id="insertOrder" parameterType="com.example.user.model.Order" keyProperty="id" useGeneratedKeys="true">
-        insert into t_order (   user_id,amount,`type`,create_time,`result`,channel,stock_name,bank_id)
+        insert into t_order (   user_id,amount,`type`,create_time,`result`,channel,stock_id,bank_id)
         values (  #{UserId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL},#{type,jdbcType=VARCHAR} ,now(),
-                #{result,jdbcType=VARCHAR},#{channel,jdbcType=VARCHAR} ,#{stockName,jdbcType=VARCHAR} ,#{bankId,jdbcType=BIGINT})
+                #{result,jdbcType=VARCHAR},#{channel,jdbcType=VARCHAR} , #{stockId,jdbcType=BIGINT} ,#{bankId,jdbcType=BIGINT})
 
     </insert>
     <update id="updateOrderById" parameterType="com.example.user.model.Order"  >
         update t_order
-        set   user_id= #{userId},amount=#{amount},`type`=#{type}, `result`=#{result},channel=#{channel},stock_name=#{stockName},bank_id=#{bankId}
+        set   user_id= #{userId},amount=#{amount},`type`=#{type}, `result`=#{result},channel=#{channel},stock_id=#{stockId},bank_id=#{bankId}
         where id = #{id}
     </update>
 

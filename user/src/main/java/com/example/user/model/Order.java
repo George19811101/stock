@@ -16,7 +16,7 @@ public class Order {
     private Date createTime;
     private int result;
     private String channel;
-    private String stockName;
+    private long stockId;
     private long bankId;
 
 
