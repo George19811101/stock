@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableDubbo(scanBasePackages  = "com.pay.modules")
-@EnableSwagger2
+//@EnableSwagger2
 public class PayApplication {
 
 

@@ -21,6 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
 /**
  * 支付宝
  * 创建者 科帮网
@@ -47,6 +49,7 @@ import org.springframework.beans.factory.annotation.Value;
  * 
  */
 @DubboService(group = "payCloud", retries = 1, timeout = 10000)
+@Service
 public class CpAliPayServiceImpl implements CpAliPayService {
 	private static final Logger logger = LoggerFactory.getLogger(CpAliPayServiceImpl.class);
 	

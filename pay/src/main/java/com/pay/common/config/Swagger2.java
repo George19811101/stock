@@ -10,6 +10,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
+@EnableSwagger2
 public class Swagger2 {
 
 	@Bean
@@ -22,35 +23,35 @@ public class Swagger2 {
 				.paths(PathSelectors.any()).build();
 	}
 
-	@Bean
-	public Docket aliPayApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-		        .groupName("支付宝API接口文档")  
-		        .apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.aliPay"))
-				.paths(PathSelectors.any()).build();
-	}
-
-	@Bean
-	public Docket wxPayApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-		        .groupName("微信API接口文档")  
-		        .apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.wxPay"))
-				.paths(PathSelectors.any()).build();
-	}
-
-	@Bean
-	public Docket unionPayApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-		        .groupName("银联API接口文档")  
-		        .apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.unionPay"))
-				.paths(PathSelectors.any()).build();
-	}
+//	@Bean
+//	public Docket aliPayApi() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//		        .groupName("支付宝API接口文档")
+//		        .apiInfo(apiInfo())
+//				.select()
+//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.aliPay"))
+//				.paths(PathSelectors.any()).build();
+//	}
+//
+//	@Bean
+//	public Docket wxPayApi() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//		        .groupName("微信API接口文档")
+//		        .apiInfo(apiInfo())
+//				.select()
+//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.wxPay"))
+//				.paths(PathSelectors.any()).build();
+//	}
+//
+//	@Bean
+//	public Docket unionPayApi() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//		        .groupName("银联API接口文档")
+//		        .apiInfo(apiInfo())
+//				.select()
+//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.unionPay"))
+//				.paths(PathSelectors.any()).build();
+//	}
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
