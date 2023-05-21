@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,8 +32,8 @@ import java.util.TreeMap;
  * 创建时间	2017年7月31日
  */
 @Api(tags ="微信支付")
-@Controller
-@RequestMapping(value = "wxPay")
+@RestController
+@RequestMapping(value = "/wxPay")
 public class CpWxPayController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CpWxPayController.class);
@@ -50,7 +51,7 @@ public class CpWxPayController {
 
 
 	@ApiOperation(value="二维码支付(模式一)根据商品ID预先生成二维码")
-	@RequestMapping(value="qcPay1",method=RequestMethod.POST)
+	@RequestMapping(value="/qcPay1",method=RequestMethod.POST)
     public String  qcPay1(Product product,ModelMap map) {
 		logger.info("二维码支付(模式一)");
         product.setProductId("20170721");
@@ -61,7 +62,7 @@ public class CpWxPayController {
     }
 
 	@ApiOperation(value="二维码支付(模式二)下单并生成二维码")
-	@RequestMapping(value="qcPay2",method=RequestMethod.POST)
+	@RequestMapping(value="/qcPay2",method=RequestMethod.POST)
     public String qcPay2(Product product,ModelMap map) {
 		logger.info("二维码支付(模式二)");
         /**
@@ -90,7 +91,7 @@ public class CpWxPayController {
 	 * 2017年7月31日  科帮网 首次创建
 	 */
 	@ApiOperation(value="支付后台回调")
-	@RequestMapping(value="notify",method=RequestMethod.POST)
+	@RequestMapping(value="/notify",method=RequestMethod.POST)
 	public void notify(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 读取参数
 		InputStream inputStream = request.getInputStream();
@@ -164,7 +165,7 @@ public class CpWxPayController {
 	 *
 	 */
 	@ApiOperation(value="模式一支付回调URL")
-	@RequestMapping(value="bizpayurl",method=RequestMethod.POST)
+	@RequestMapping(value="/bizpayurl",method=RequestMethod.POST)
 	public void bizpayurl(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		logger.info("模式一支付回调URL");
 		//读取参数

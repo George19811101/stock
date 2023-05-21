@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import weixin.popular.api.SnsAPI;
 
 import java.util.Map;
@@ -20,6 +21,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 @DubboService(group = "payCloud", retries = 1, timeout = 10000)
+@Service
 public class CpWxPayServiceImpl implements CpWxPayService {
 	private static final Logger logger = LoggerFactory.getLogger(CpWxPayServiceImpl.class);
 	

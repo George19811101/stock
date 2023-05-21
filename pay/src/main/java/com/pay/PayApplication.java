@@ -10,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -17,7 +18,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableDubbo(scanBasePackages  = "com.pay.modules")
-//@EnableSwagger2
+//@ComponentScan({"com.pay.common.config","com.pay.modules.alipay.util","com.pay.modules.ppay.util","com.pay.modules.wxpay.util"})
+@EnableSwagger2
 public class PayApplication {
 
 

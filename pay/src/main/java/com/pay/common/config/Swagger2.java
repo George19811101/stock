@@ -1,4 +1,5 @@
 package com.pay.common.config;
+import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -12,46 +13,60 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
-
-	@Bean
-	public Docket webApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-		        .groupName("支付后台API接口文档")  
-		        .apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.web"))
-				.paths(PathSelectors.any()).build();
-	}
-
-//	@Bean
-//	public Docket aliPayApi() {
-//		return new Docket(DocumentationType.SWAGGER_2)
-//		        .groupName("支付宝API接口文档")
-//		        .apiInfo(apiInfo())
-//				.select()
-//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.aliPay"))
-//				.paths(PathSelectors.any()).build();
-//	}
-//
 //	@Bean
 //	public Docket wxPayApi() {
 //		return new Docket(DocumentationType.SWAGGER_2)
-//		        .groupName("微信API接口文档")
-//		        .apiInfo(apiInfo())
+//				.groupName("微信API接口文档")
+//				.apiInfo(apiInfo())
 //				.select()
-//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.wxPay"))
+//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.wxPay.controller"))
 //				.paths(PathSelectors.any()).build();
 //	}
-//
-//	@Bean
-//	public Docket unionPayApi() {
-//		return new Docket(DocumentationType.SWAGGER_2)
-//		        .groupName("银联API接口文档")
-//		        .apiInfo(apiInfo())
-//				.select()
-//				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.unionPay"))
-//				.paths(PathSelectors.any()).build();
-//	}
+	@Bean
+	public Docket wxPayApi() {
+
+		return new Docket(DocumentationType.SWAGGER_2)
+				.groupName("微信API接口文档")
+				.enable(true)          // 是否禁用swagger
+				.useDefaultResponseMessages(false)
+				.apiInfo(apiInfo())
+				.select()
+				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+				.paths(PathSelectors.any())
+				.build();
+
+	}
+   	@Bean
+	public Docket webApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+		        .groupName("支付后台API接口文档")
+		        .apiInfo(apiInfo())
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.web.controller"))
+				.paths(PathSelectors.any()).build();
+	}
+
+	@Bean
+	public Docket aliPayApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+		        .groupName("支付宝API接口文档")
+		        .apiInfo(apiInfo())
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.aliPay.controller"))
+				.paths(PathSelectors.any()).build();
+	}
+
+
+
+	@Bean
+	public Docket unionPayApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+		        .groupName("银联API接口文档")
+		        .apiInfo(apiInfo())
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.pay.modules.unionPay.controller"))
+				.paths(PathSelectors.any()).build();
+	}
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()

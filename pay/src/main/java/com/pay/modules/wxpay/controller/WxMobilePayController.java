@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,8 +32,8 @@ import java.util.TreeMap;
  *
  */
 @Api(tags ="微信H5支付")
-@Controller
-@RequestMapping(value = "weixinMobile")
+@RestController
+@RequestMapping(value = "/weixinMobile")
 public class WxMobilePayController {
 
 	private static final Logger logger = LoggerFactory.getLogger(WxMobilePayController.class);
@@ -47,7 +48,7 @@ public class WxMobilePayController {
     private WxPayUtil wxPayUtil;
 	
 	@ApiOperation(value="H5支付(需要公众号内支付)")
-	@RequestMapping(value="pay",method=RequestMethod.POST)
+	@RequestMapping(value="/pay",method=RequestMethod.POST)
     public String  pay(Product product) {
 		logger.info("H5支付(需要公众号内支付)");
 		String url =  weixinPayService.wxPayMobile(product);
@@ -55,14 +56,14 @@ public class WxMobilePayController {
     }
 
 	@ApiOperation(value="公众号H5支付主页")
-	@RequestMapping(value="payPage",method=RequestMethod.GET)
+	@RequestMapping(value="/payPage",method=RequestMethod.GET)
 	public String pay()  {
 		//这里因为无法测试、模板下是个JSP页面、无法正常运行，请自行修改逻辑
 		return "wxPay/payPage";
 	}
 
 	@ApiOperation(value="纯H5支付(不建议在APP端使用)")
-	@RequestMapping(value="h5pay",method=RequestMethod.POST)
+	@RequestMapping(value="/h5pay",method=RequestMethod.POST)
     public String  h5pay(Product product,ModelMap map) {
 		logger.info("纯H5支付(不建议在APP端使用)");
 		//mweb_url为拉起微信支付收银台的中间页面，可通过访问该url来拉起微信客户端，完成支付,mweb_url的有效期为5分钟。
@@ -74,7 +75,7 @@ public class WxMobilePayController {
 		}
     }
 	@ApiOperation(value="小程序支付(需要HTTPS)")
-	@RequestMapping(value="smallRoutine",method=RequestMethod.POST)
+	@RequestMapping(value="/smallRoutine",method=RequestMethod.POST)
     public String  smallRoutine(Product product,ModelMap map) {
 		logger.info("小程序支付(需要HTTPS)、不需要支付目录和授权域名");
 		String url =  weixinPayService.wxPayMobile(product);
@@ -93,7 +94,7 @@ public class WxMobilePayController {
 	 *
 	 */
 	@ApiOperation(value="预下单")
-	@RequestMapping(value="dopay",method=RequestMethod.POST)
+	@RequestMapping(value="/dopay",method=RequestMethod.POST)
 	public String dopay(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String orderNo = request.getParameter("outTradeNo");
 		String totalFee = request.getParameter("totalFee");
@@ -164,7 +165,7 @@ public class WxMobilePayController {
 	 *
 	 */
 	@ApiOperation(value="手机支付完成回调")
-	@RequestMapping(value="WXPayBack",method=RequestMethod.POST)
+	@RequestMapping(value="/WXPayBack",method=RequestMethod.POST)
 	public void WXPayBack(HttpServletRequest request, HttpServletResponse response){
 		String resXml = "";
 		try {

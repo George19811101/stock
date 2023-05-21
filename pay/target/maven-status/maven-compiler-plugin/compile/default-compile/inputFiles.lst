@@ -1,6 +1,7 @@
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\common\util\SslUtils.java
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\modules\alipay\service\impl\CpAliPayServiceImpl.java
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\modules\wxpay\util\WxPayUrl.java
+D:\workspace\新建文件夹\pay\src\main\java\com\pay\common\config\SpringfoxJsonToGsonAdapter.java
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\common\util\ZxingUtils.java
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\modules\wxpay\controller\WxMobilePayController.java
 D:\workspace\新建文件夹\pay\src\main\java\com\pay\modules\wxpay\util\XMLUtil.java

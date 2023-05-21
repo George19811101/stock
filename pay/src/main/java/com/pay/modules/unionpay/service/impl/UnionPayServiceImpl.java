@@ -12,11 +12,13 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @DubboService(group = "payCloud", retries = 1, timeout = 10000)
+@Service
 public class UnionPayServiceImpl implements IUnionPayService{
 	private static final Logger logger = LoggerFactory.getLogger(UnionPayServiceImpl.class);
 	

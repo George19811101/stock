@@ -5,7 +5,9 @@ import com.pay.common.model.Result;
 import com.pay.modules.ppay.service.WxPayService;
 import com.pay.modules.ppay.util.PayUtils;
 import com.yungouos.pay.util.PaySignUtil;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +21,8 @@ import javax.servlet.http.HttpServletRequest;
  * 快来看看吧！https://mmbizurl.cn/s/hEludsCNs
  * @author 小柒2012
  */
-@RestController
+@Api(tags ="个人微信支付")
+@Controller
 @RequestMapping("/ppay")
 public class WxPayController{
 

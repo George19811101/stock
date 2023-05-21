@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Api(tags ="支付后台")
 @Controller
-@RequestMapping(value = "pay")
+@RequestMapping(value = "/pay")
 public class PayController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 
 	@ApiOperation(value="登陆")
-	@RequestMapping(value="login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public @ResponseBody String login(String account,String password) {
 		logger.info("登陆");
 		String param = "false";
@@ -29,7 +29,7 @@ public class PayController {
 		return param;
 	}
 	@ApiOperation(value="后台展示")
-	@RequestMapping(value="main",method=RequestMethod.GET)
+	@RequestMapping(value="/main",method=RequestMethod.GET)
 	public String main(Model model) {
 		model.addAttribute("ip", "192.168.1.66");
 		model.addAttribute("address", "青岛");

@@ -29,6 +29,7 @@ com\pay\modules\wxpay\util\PayCommonUtil.class
 com\pay\modules\wxpay\util\XMLUtil.class
 com\pay\common\config\MyAdapter.class
 com\pay\common\model\Result.class
+com\pay\common\config\SpringfoxJsonToGsonAdapter.class
 com\pay\modules\ppay\util\PayUtils.class
 com\pay\modules\wxpay\service\CpWxPayService.class
 com\pay\modules\wxpay\service\impl\CpWxPayServiceImpl.class

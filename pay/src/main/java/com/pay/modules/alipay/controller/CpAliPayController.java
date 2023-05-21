@@ -28,7 +28,7 @@ import java.util.Map;
  * 创建时间	2017年7月30日
  */
 @Api(tags ="支付宝支付")
-@RestController
+@Controller
 @RequestMapping(value = "aliPay")
 public class CpAliPayController {
 
