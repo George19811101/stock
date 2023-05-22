@@ -16,6 +16,8 @@
 	<modules>
 		<module>pay</module>
 		<module>user</module>
+		<module>common</module>
+		<module>common</module>
 	</modules>
 
 
