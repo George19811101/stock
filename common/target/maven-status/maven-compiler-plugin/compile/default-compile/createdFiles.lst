@@ -1,0 +1,17 @@
+com\example\user\model\bo\SendCaptchaBo.class
+com\example\user\model\bo\updateTradePassword.class
+com\example\user\model\bo\LoginPassword.class
+com\example\user\model\bo\TradePassword.class
+com\example\user\model\vo\StockVo.class
+com\example\user\model\UserBank.class
+com\example\user\model\bo\WalletLog.class
+com\example\user\model\bo\StockBo.class
+com\example\user\model\Banks.class
+com\example\user\model\bo\DaySetting.class
+com\example\user\model\bo\RegisterBo.class
+com\example\user\model\po\User.class
+com\example\user\model\vo\UserVo.class
+com\example\user\model\Order.class
+com\example\user\model\bo\MonthSetting.class
+com\example\user\model\bo\UserBo.class
+com\example\user\model\bo\Wallet.class
