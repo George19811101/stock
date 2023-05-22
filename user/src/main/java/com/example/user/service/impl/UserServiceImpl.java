@@ -2,6 +2,7 @@ package com.example.user.service.impl;
 
 import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaFoxUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Validator;
@@ -188,10 +189,10 @@ public class UserServiceImpl implements UserService {
             return Result.exception(ExceptionEnum.PASSWORD_ERROR);
         }
 //        userVo.setToken( RandomStringUtils.randomAlphanumeric(24));
-//        redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
+//
         StpUtil.login(userVo.getId());
-        userVo.setToken(StpUtil.getTokenValue());
-
+        userVo.setToken(MD5Util.getUnorderedUUIDs());
+        redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
         return Result.ok(userVo);
 
     }

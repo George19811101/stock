@@ -6,19 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="user" />
         <module name="pay" />
+        <module name="common" />
+        <module name="user" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="1.8" />
+      <module name="gateway" target="1.8" />
       <module name="pay" target="1.8" />
       <module name="user" target="1.8" />
-      <module name="新建文件夹" target="1.5" />
+      <module name="新建文件夹" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gateway" options="-parameters" />
       <module name="pay" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>

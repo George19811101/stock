@@ -27,12 +27,12 @@ sa-token:
   activity-timeout: -1
   is-concurrent: false
   is-share: false
-  token-style: simple-uuid
+  token-style: uuid
   is-log: false
   auto-renew: true
   is-print: false
   pattern: /**
-  exclude-url: /user/login,/userVirtualWallet/in,/user/logout,/bulletinController/list,/bulletinController/bulletin,/bannerController/list,/user/register,/user/sendCaptcha,/user/forgetPassword,/user/listArea,/virtualCoin/list,/storage/**,/swagger-resources,/v2/api-docs,/doc.*/**,/smsTemp/**,/captcha/**,/mailTemp/**,/webjars/**
+  exclude-url: /swagger-ui.html,/user/login,/userVirtualWallet/in,/user/logout,/bulletinController/list,/bulletinController/bulletin,/bannerController/list,/user/register,/user/sendCaptcha,/user/forgetPassword,/user/listArea,/virtualCoin/list,/storage/**,/swagger-resources,/v2/api-docs,/doc.*/**,/smsTemp/**,/captcha/**,/mailTemp/**,/webjars/**
 
 
 thredpool:

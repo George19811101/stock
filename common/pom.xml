@@ -8,7 +8,7 @@
         <artifactId>stock</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
+    <description>公共组件</description>
     <artifactId>common</artifactId>
 
     <properties>
@@ -75,18 +75,34 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <!--    <build>-->
+    <!--        <resources>-->
+    <!--            <resource>-->
+    <!--                <directory>src/main/java</directory>-->
+    <!--                <includes>-->
+    <!--                    <include>**/*.xml</include>-->
+    <!--                </includes>-->
+    <!--            </resource>-->
+    <!--            <resource>-->
+    <!--                <directory>src/main/resources</directory>-->
+    <!--            </resource>-->
+    <!--        </resources>-->
+    <!--    </build>-->
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <classifier>execute</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

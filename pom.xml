@@ -17,8 +17,8 @@
 		<module>pay</module>
 		<module>user</module>
 		<module>common</module>
-		<module>common</module>
-	</modules>
+        <module>gateway</module>
+    </modules>
 
 
 </project>

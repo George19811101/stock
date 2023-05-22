@@ -1,6 +1,7 @@
 package com.example.user.common;
 
 import java.security.MessageDigest;
+import java.util.UUID;
 
 public class MD5Util {
     public static String string2MD5(String inStr) {
@@ -37,6 +38,13 @@ public class MD5Util {
         }
 
         return hexValue.toString();
+    }
+
+    public static String getUnorderedUUIDs() {
+        UUID uuid = UUID.randomUUID();
+        String str = uuid.toString();
+//        String uuidStr = str.replace("-", "");
+        return str;
     }
 
     public static void main(String[] args) {

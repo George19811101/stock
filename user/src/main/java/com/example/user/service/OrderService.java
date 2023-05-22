@@ -1,7 +1,7 @@
 package com.example.user.service;
 
 import com.example.user.common.Result;
-import com.example.user.model.Banks;
+
 import com.example.user.model.Order;
 
 import java.util.List;
