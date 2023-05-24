@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.annotation.UserLoginToken;
 import com.example.user.common.Result;
 import com.example.user.model.bo.DaySetting;
 import com.example.user.service.DaySettingService;
@@ -19,11 +20,13 @@ public class DaySettingController {
 
     @ApiOperation("保真日配置信息")
     @PostMapping("saveDaysetting")
+    @UserLoginToken
     public Result<String> save(@RequestBody DaySetting daySetting) {
         return daySettingService.save(daySetting);
     }
     @ApiOperation("撤销日配置信息")
     @PostMapping("revokeDaysetting")
+    @UserLoginToken
     public Result<String> revoke(@RequestBody long id) {
         return daySettingService.revoke(id);
     }

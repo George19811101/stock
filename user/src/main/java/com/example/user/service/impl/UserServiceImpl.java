@@ -16,6 +16,7 @@ import com.example.user.model.po.User;
 import com.example.user.model.vo.UserVo;
 import com.example.user.service.UserService;
 
+import com.example.user.util.JwtTokenUtils;
 import com.example.user.util.SnowflakeUtils;
 
 import lombok.extern.slf4j.Slf4j;
@@ -164,7 +165,7 @@ public class UserServiceImpl implements UserService {
      * 登录
      */
     @Override
-    public Result<UserVo> login(UserBo userBo) {
+    public Result<UserVo> login(UserBo userBo) throws Exception {
 
         String phoneNo = userBo.getPhoneNo();
 
@@ -191,7 +192,7 @@ public class UserServiceImpl implements UserService {
 //        userVo.setToken( RandomStringUtils.randomAlphanumeric(24));
 //
         StpUtil.login(userVo.getId());
-        userVo.setToken(MD5Util.getUnorderedUUIDs());
+        userVo.setToken(JwtTokenUtils.createToken( userVo.getId() ));
         redisTemplate.opsForValue().set(userVo.getToken() , userVo, 20, TimeUnit.MINUTES);
         return Result.ok(userVo);
 
@@ -284,6 +285,11 @@ public class UserServiceImpl implements UserService {
         String result= smsUtils.sendSms("13886918560","死家伙，我不找你你就不找我了，滚蛋，属王八的");
 
         return Result.ok();
+    }
+
+    @Override
+    public User getUserById(long id) {
+        return userMapper.selectById(id);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.annotation.UserLoginToken;
 import com.example.user.common.Result;
 import com.example.user.model.Order;
 import com.example.user.service.OrderService;
@@ -22,6 +23,7 @@ public class OrderController {
     private OrderService orderService;
     @ApiOperation("添加银行信息")
     @PostMapping("/add")
+    @UserLoginToken
     public    Callable<String>  add(@RequestBody Order order) {
         log.info("主线程开始");
         //使用Runnable异步处理Rest服务
@@ -43,6 +45,7 @@ public class OrderController {
 
     @ApiOperation("修改银行信息")
     @PostMapping("/update")
+    @UserLoginToken
     public Result<String> update(@RequestBody Order order) {
         return orderService.updateOrderById(order);
     }

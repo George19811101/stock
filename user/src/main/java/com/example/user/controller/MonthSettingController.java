@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.annotation.UserLoginToken;
 import com.example.user.common.Result;
 import com.example.user.model.bo.DaySetting;
 import com.example.user.model.bo.MonthSetting;
@@ -23,12 +24,14 @@ public class MonthSettingController {
 
     @ApiOperation("接收股票信息")
     @PostMapping("saveMonthsetting")
+    @UserLoginToken
     public Result<String> save(@RequestBody MonthSetting monthSetting) {
         return monthSettingService.save(monthSetting);
     }
 
     @ApiOperation("撤销月配置信息")
     @PostMapping("revokeMonthsetting")
+    @UserLoginToken
     public Result<String> revoke(@RequestBody long id) {
         return monthSettingService.revoke(id);
     }

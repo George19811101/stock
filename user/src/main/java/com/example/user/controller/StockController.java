@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.annotation.UserLoginToken;
 import com.example.user.common.Result;
 import com.example.user.model.bo.SendCaptchaBo;
 import com.example.user.model.bo.StockBo;
@@ -20,6 +21,7 @@ public class StockController {
 
     @ApiOperation("接收股票信息")
     @GetMapping("getStock")
+    @UserLoginToken
     public Result<String> getStockIncrease( ) {
         return stockService.getStockIncrease();
     }

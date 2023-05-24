@@ -187,7 +187,8 @@ public enum ExceptionEnum {
 
     NO_USER(1085,"查询不到用户！"),
 
-
+    NO_TOKEN(10850,"header中没有带入TOKEN！"),
+     TOKEN_ERROR(10851,"token不正确，请不要通过非法手段创建token"),
 
     NO_ENOUGHT_MONEY(2000,"用户钱包余额不足，不足够支付！"),
     SCHEDULE_IS_START(2001,"日配置已在支行，不能够撤销！"),
